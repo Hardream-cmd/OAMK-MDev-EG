@@ -4,7 +4,8 @@ class EndPoints {
 
     companion object {
 
-        //Base URL        const val BASE_URL =     "https://api.getgeoapi.com/api/v2/currency/"
+        //Base URL
+        const val BASE_URL =     "https://api.getgeoapi.com/api/v2/currency/"
 
         //API KEY - Go to geo currency converter website, obtain an                                       API key and paste it between " "
 
