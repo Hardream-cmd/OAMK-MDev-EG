@@ -42,8 +42,11 @@ android {
 
 dependencies {
 
-    implementation "com.google.dagger:hilt-android:2.44"
-    kapt "com.google.dagger:hilt-compiler:2.44"
+    //implementation "com.google.dagger:hilt-android:2.44"
+    //kapt "com.google.dagger:hilt-compiler:2.44"
+
+    implementation 'com.google.dagger:hilt-android:2.44'
+    kapt 'com.google.dagger:hilt-android-compiler:2.44'
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
@@ -104,4 +107,9 @@ dependencies {
 }
 kapt {
     correctErrorTypes true
+    useBuildCache true
+    arguments {
+        // Enable Hilt for all modules that include AndroidX libraries
+        arg("enableExperimentalClasspathAggregation", true)
+    }
 }
