@@ -1,4 +1,4 @@
-# OAMK-MDev-EG
+# Currency Converter
 
 ## What it is : 
 - Here is a demonstration video : https://www.youtube.com/shorts/lXbsZtbTnCA
