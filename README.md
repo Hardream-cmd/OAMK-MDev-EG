@@ -38,4 +38,4 @@ app/src/main/java/com/example/extragrade2
 (Line 29) app/src/main/java/com/example/extragrade2/network/BaseDataSource.kt 
 (Line 163, 248, 262) app/src/main/java/com/example/extragrade2/view/MainActivity.kt
 
-- A spinner is displayed to the user on UI when data is loaded on the background. see screenshot : 
+- A spinner is displayed to the user on UI when data is loaded on the background.
