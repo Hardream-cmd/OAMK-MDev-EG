@@ -5,6 +5,9 @@
 - It is a single activity application which allow the user to convert any currency to another thanks to an API.
 - It uses : API, MVVM, Retrofit, View Binding, Flow, LiveData, Coroutines (to simplify code that executes asynchronously) and Hilt (to reduce the burden of manually injecting dependencies into your project).
 
+ ## IF THERE IS ERRORS WHEN BUILD THE APP : 
+ Here is a OneDrive link to the exact version which was running on my laptop : https://1drv.ms/u/s!As1PCRnfEA268Pxrqls7Y_Fhk2nhRQ?e=6M8QoO
+
 ## How to use the app : 
 - Clone the app
 - Get a Currency API Key at this adress : https://currency.getgeoapi.com/
