@@ -16,29 +16,29 @@
 
 ## Why is worth grade 5 : 
 
-- The application uses an API service and display data retrieved from the service, the Currency API : https://currency.getgeoapi.com/
+1. The application uses an API service and display data retrieved from the service, the Currency API : https://currency.getgeoapi.com/
 
-- The application uses MVVM architecture and a ViewModel class is implemented for holding state and functionality for UI, see : 
-app/src/main/java/com/example/extragrade2/model
-app/src/main/java/com/example/extragrade2/view
-app/src/main/java/com/example/extragrade2/viewmodel
+2. The application uses MVVM architecture and a ViewModel class is implemented for holding state and functionality for UI, see : 
+- app/src/main/java/com/example/extragrade2/model
+- app/src/main/java/com/example/extragrade2/view
+- app/src/main/java/com/example/extragrade2/viewmodel
 
-- The UI is suitable for mobile app. It uses :
+3. The UI is suitable for mobile app. It uses :
 -- Custom colors : app/src/main/res/values/colors.xml
 -- The Google Roboto font : app/src/main/res/font/roboto.ttf
 -- An Icon : app/src/main/res/mipmap
 -- A Splash screen : app/src/main/res/values/themes.xml
 
-- It has a Main screen and an Contact Me view
+4. It has a Main screen and an Contact Me view
 
-- All the strings are saved under resource file, see :
-app/src/main/res/values/strings.xml 
+5. All the strings are saved under resource file, see :
+- app/src/main/res/values/strings.xml 
 
-- The code is divided into separate files and packages, see : 
-app/src/main/java/com/example/extragrade2
+6. The code is divided into separate files and packages, see : 
+- app/src/main/java/com/example/extragrade2
 
-- The errors are handled, see : 
-(Line 29) app/src/main/java/com/example/extragrade2/network/BaseDataSource.kt 
-(Line 163, 248, 262) app/src/main/java/com/example/extragrade2/view/MainActivity.kt
+7. The errors are handled, see : 
+- (Line 29) app/src/main/java/com/example/extragrade2/network/BaseDataSource.kt 
+- (Line 163, 248, 262) app/src/main/java/com/example/extragrade2/view/MainActivity.kt
 
-- A spinner is displayed to the user on UI when data is loaded on the background.
+8. A spinner is displayed to the user on UI when data is loaded on the background.
