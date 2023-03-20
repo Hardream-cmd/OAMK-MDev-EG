@@ -5,10 +5,7 @@ import com.example.extragrade2.helper.Resource
 import retrofit2.Response
 import java.lang.Exception
 
-/**
- * This helps to properly handle the response gotten from the API - Be it error, success etc
- */
-
+//This helps to properly handle the response gotten from the API
 abstract class BaseDataSource {
 
     suspend fun <T> safeApiCall(apiCall: suspend () -> Response<T>): Resource<T> {

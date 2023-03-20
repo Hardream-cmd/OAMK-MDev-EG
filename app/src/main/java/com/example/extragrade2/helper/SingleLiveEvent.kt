@@ -7,9 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import java.util.concurrent.atomic.AtomicBoolean
 
-/**
- * Here is a helper class for handling single live event, which is always aware of a viewLifeCycle as opposed to LiveData
- */
+//Here is a helper class for handling single live event, which is always aware of a viewLifeCycle as opposed to LiveData
 
 class SingleLiveEvent <T>: MutableLiveData<T>() {
 
@@ -22,7 +20,6 @@ class SingleLiveEvent <T>: MutableLiveData<T>() {
             Log.w(TAG, "Multiple observers registered but only one will be notified of changes.")
         }
 
-        // Observe the internal MutableLiveData
         super.observe(owner, Observer<T> { t ->
             if (mPending.compareAndSet(true, false)) {
                 observer.onChanged(t)
@@ -36,9 +33,6 @@ class SingleLiveEvent <T>: MutableLiveData<T>() {
         super.setValue(t)
     }
 
-    /**
-     * Used for cases where T is Void, to make calls cleaner.
-     */
     @MainThread
     fun call() {
         value = null

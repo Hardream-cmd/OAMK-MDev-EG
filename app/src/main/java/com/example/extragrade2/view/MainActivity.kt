@@ -11,6 +11,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.material.snackbar.Snackbar
 import com.example.extragrade2.R
 import com.example.extragrade2.databinding.ActivityMainBinding
@@ -26,12 +27,11 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     //Declare all variables
-
     //I am using viewBinding to get the reference of the views
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
-    //Selected country string, default is Afghanistan, since its the first country listed in the spinner
+    //Selected country string, (AFN for Afghanistan, first country on the list)
     private var selectedItem1: String? = "AFN"
     private var selectedItem2: String? = "AFN"
 
@@ -40,9 +40,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        // Handle the splash screen transition.
+        val splashScreen = installSplashScreen()
         setTheme(R.style.AppTheme_NoActionBar);
-
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         //Make status bar transparent
         Utility.makeStatusBarTransparent(this)
@@ -51,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //Initialize both Spinner
+        //Initialize both Dropdown list
         initSpinner()
 
         //Listen to click events
@@ -59,19 +61,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * This method does everything required for handling spinner (Dropdown list) - showing list of countries, handling click events on items selected.*
-     */
-
+    // This method does everything required for handling the Dropdown list (spinner)
+    // - showing list of countries, handling click events on items selected.
     private fun initSpinner(){
 
-        //get first spinner country reference in view
+        //get first dropdown list country reference in view
         val spinner1 = binding.spnFirstCountry
 
-        //set items in the spinner i.e a list of all countries
+        //set items in the Dropdown list of the countries
         spinner1.setItems( getAllCountries() )
 
-        //hide key board when spinner shows (For some weird reasons, this isn't so effective as I am using a custom Material Spinner)
+        //hide key board when Dropdown List shows
         spinner1.setOnClickListener {
             Utility.hideKeyboard(this)
         }
@@ -82,19 +82,19 @@ class MainActivity : AppCompatActivity() {
             val countryCode = getCountryCode(item.toString())
             val currencySymbol = getSymbol(countryCode)
             selectedItem1 = currencySymbol
-            binding.txtFirstCurrencyName.setText(selectedItem1)
+            binding.txtFirstCurrencyName.text = selectedItem1
         }
 
 
-        //get second spinner country reference in view
+        //get second Dropdown list country reference in view
         val spinner2 = binding.spnSecondCountry
 
-        //hide key board when spinner shows
+        //hide key board when Dropdown list shows
         spinner1.setOnClickListener {
             Utility.hideKeyboard(this)
         }
 
-        //set items on second spinner i.e - a list of all countries
+        //set items on second Dropdown list
         spinner2.setItems( getAllCountries() )
 
 
@@ -104,16 +104,13 @@ class MainActivity : AppCompatActivity() {
             val countryCode = getCountryCode(item.toString())
             val currencySymbol = getSymbol(countryCode)
             selectedItem2 = currencySymbol
-            binding.txtSecondCurrencyName.setText(selectedItem2)
+            binding.txtSecondCurrencyName.text = selectedItem2
         }
 
     }
 
 
-    /**
-     * A method for getting a country's currency symbol from the country's code
-     * e.g USA - USD
-     */
+    // Method for getting a country's currency symbol
 
     private fun getSymbol(countryCode: String?): String? {
         val availableLocales = Locale.getAvailableLocales()
@@ -125,18 +122,11 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    /**
-     * A method for getting a country's code from the country name
-     * e.g Nigeria - NG
-     */
-
+    // method for getting a country's code
     private fun getCountryCode(countryName: String) = Locale.getISOCountries().find { Locale("", it).displayCountry == countryName }
 
 
-    /**
-     * A method for getting all countries in the world - about 256 or so
-     */
-
+    // A method for getting all countries in the world
     private fun getAllCountries(): ArrayList<String> {
 
         val locales = Locale.getAvailableLocales()
@@ -152,13 +142,10 @@ class MainActivity : AppCompatActivity() {
         return countries
     }
 
-    /**
-     * A method for handling click events in the UI
-     */
-
+    // A method for handling click events in the UI
     private fun setUpClickListener(){
 
-        //Convert button clicked - check for empty string and internet then do the conersion
+        //Convert button clicked - check for empty string and internet then do the conversion
         binding.btnConvert.setOnClickListener {
 
             //check if the input is empty
@@ -186,21 +173,19 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        //handle clicks of other views
+        //CONTACT VIEW
+
+        // handle clicks of other views
         binding.txtContact.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
-            val data: Uri = Uri.parse("mailto:ibrajix@gmail.com?subject=Hello")
+            val data: Uri = Uri.parse("mailto:arnaud.h.durand@gmail.com?subject=Hi!")
             intent.data = data
             startActivity(intent)
         }
 
     }
 
-    /**
-     * A method that does the conversion by communicating with the API - fixer.io based on the data inputed
-     * Uses viewModel and flows
-     */
-
+    // A method that does the conversion by communicating with the API based on the data inputted, uses viewModel and flows
     private fun doConversion(){
 
         //hide keyboard
@@ -212,7 +197,7 @@ class MainActivity : AppCompatActivity() {
         //make button invisible
         binding.btnConvert.visibility = View.GONE
 
-        //Get the data inputed
+        //Get the data inputted
         val apiKey = EndPoints.API_KEY
         val from = selectedItem1.toString()
         val to = selectedItem2.toString()
@@ -226,11 +211,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /**
-     * Using coroutines flow, changes are observed and responses gotten from the API
-     *
-     */
-
+    // Using coroutines flow, changes are observed and responses gotten from the API
     @SuppressLint("SetTextI18n")
     private fun observeUi() {
         mainViewModel.data.observe(this, androidx.lifecycle.Observer {result ->
@@ -249,7 +230,6 @@ class MainActivity : AppCompatActivity() {
 
                             mainViewModel.convertedRate.value = rateForAmount
 
-                            //format the result obtained e.g 1000 = 1,000
                             val formattedString = String.format("%,.2f", mainViewModel.convertedRate.value)
 
                             //set the value in the second edit text field
@@ -299,10 +279,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    /**
-     * Method for changing the background color of snackBars
-     */
-
+    // Method for changing the background color of snackBars
     private fun Snackbar.withColor(@ColorInt colorInt: Int): Snackbar {
         this.view.setBackgroundColor(colorInt)
         return this

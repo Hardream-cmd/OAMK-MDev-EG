@@ -2,15 +2,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:opacity="opaque">
-    <!-- The background color-->
+
     <item android:drawable="@android:color/white"/>
 
-    <!-- Placeholder logo (Use the logo you uploaded)-->
+    <!-- previous way:
+     <item android:name="android:windowSplashScreenAnimatedIcon">@drawable/...</item>
+     -->
 
-    <item>
-        <bitmap
-            android:src="@drawable/logo"
-            android:gravity="center"/>
-    </item>
 
 </layer-list>
