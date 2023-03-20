@@ -12,9 +12,7 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
-/**
- * Utility classes for doing stuffs such as hiding keyboard, checking if network is available etc
- */
+// Utility classes for doing tasks as hiding keyboard, checking if network is available, etc.
 
 object Utility {
 
@@ -28,7 +26,7 @@ object Utility {
         if (view == null) {
             view = View(activity)
         }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0)
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     //check if network is connected
@@ -60,12 +58,10 @@ object Utility {
     }
 
     fun makeStatusBarTransparent(activity: Activity){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            val decor = activity.window.decorView
-            decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-            val w = activity.window
-            w.statusBarColor = Color.TRANSPARENT
-        }
+        val decor = activity.window.decorView
+        decor.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        val w = activity.window
+        w.statusBarColor = Color.TRANSPARENT
     }
 
 }
