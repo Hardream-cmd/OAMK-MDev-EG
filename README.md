@@ -6,7 +6,7 @@
 - It uses : API, MVVM, Retrofit, View Binding, Flow, LiveData, Coroutines (to simplify code that executes asynchronously) and Hilt (to reduce the burden of manually injecting dependencies into your project).
 
  ## If there are any errors when building the app : 
- Here is a OneDrive link to the exact version which was running on my laptop : https://1drv.ms/u/s!As1PCRnfEA268Pxrqls7Y_Fhk2nhRQ?e=6M8QoO
+ OneDrive link to the exact working version which was running on my laptop : https://1drv.ms/u/s!As1PCRnfEA268Pxrqls7Y_Fhk2nhRQ?e=6M8QoO
 
 ## How to use the app : 
 - Clone the app
